@@ -29,5 +29,7 @@ require("lazy").setup {
   require("plugins.indent-blankline"),
   require("plugins.misc"),
   require("plugins.comment"),
+  require("plugins.nvim-dap"),
+  require("plugins.cmake-tools"),
   -- require("plugins.vimtex"), -- Does not work with nvim0.11 at the moment. 
 }

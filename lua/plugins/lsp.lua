@@ -133,7 +133,7 @@ return {
 			bashls = {},
 			clangd = {},
 			-- ts_ls = {},
-			-- ruff = {},
+			ruff = {},
 			pyright = {},
 			-- html = { filetypes = { 'html', 'twig', 'hbs' } },
 			-- cssls = {},
@@ -152,7 +152,10 @@ return {
 						runtime = { version = "LuaJIT" },
 						workspace = {
 							checkThirdParty = false,
-							library = vim.api.nvim_get_runtime_file("", true),
+							library = {
+								vim.api.nvim_get_runtime_file("", true),
+								"${3rd}/luv/library",
+							},
 						},
 						diagnostics = {
 							globals = { "vim" },
