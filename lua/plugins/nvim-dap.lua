@@ -11,18 +11,18 @@ return {
       "mfussenegger/nvim-dap-python",
     },
     config = function()
-      local dap = require "dap"
-      local ui = require "dapui"
+      local dap = require("dap")
+      local ui = require("dapui")
 
       require("dapui").setup()
       require("dap-go").setup()
 
-      require("nvim-dap-virtual-text").setup {
+      require("nvim-dap-virtual-text").setup({
         -- This just tries to mitigate the chance that I leak tokens here. Probably won't stop it from happening...
         display_callback = function(variable)
           local name = string.lower(variable.name)
           local value = string.lower(variable.value)
-          if name:match "secret" or name:match "api" or value:match "secret" or value:match "api" then
+          if name:match("secret") or name:match("api") or value:match("secret") or value:match("api") then
             return "*****"
           end
 
@@ -33,8 +33,8 @@ return {
           return " " .. variable.value
         end,
 
-        require("dap-python").setup(".venv/bin/python")
-      }
+        require("dap-python").setup(".venv/bin/python"),
+      })
 
       -- Handled by nvim-dap-go
       -- dap.adapters.go = {
@@ -46,7 +46,7 @@ return {
       --   },
       -- }
 
-      local elixir_ls_debugger = vim.fn.exepath "elixir-ls-debugger"
+      local elixir_ls_debugger = vim.fn.exepath("elixir-ls-debugger")
       if elixir_ls_debugger ~= "" then
         dap.adapters.mix_task = {
           type = "executable",
@@ -69,33 +69,33 @@ return {
       -- lua dap setup
       dap.configurations.lua = {
         {
-          type = 'nlua',
-          request = 'attach',
+          type = "nlua",
+          request = "attach",
           name = "Attach to running Neovim instance",
-        }
+        },
       }
 
       dap.adapters.nlua = function(callback, config)
-        callback({ type = 'server', host = config.host or "127.0.0.1", port = config.port or 8086 })
+        callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
       end
-      
-      -- Key bindings to interact with nvim-dap client
-      vim.keymap.set('n', '<leader>db', require"dap".toggle_breakpoint, { noremap = true })
-      vim.keymap.set('n', '<leader>dc', require"dap".continue, { noremap = true })
-      vim.keymap.set('n', '<leader>do', require"dap".step_over, { noremap = true })
-      vim.keymap.set('n', '<leader>di', require"dap".step_into, { noremap = true })
 
-      vim.keymap.set('n', '<leader>dl', function() 
-        require"osv".launch({port = 8086}) 
+      -- Key bindings to interact with nvim-dap client
+      vim.keymap.set("n", "<leader>db", require("dap").toggle_breakpoint, { noremap = true })
+      vim.keymap.set("n", "<leader>dc", require("dap").continue, { noremap = true })
+      vim.keymap.set("n", "<leader>do", require("dap").step_over, { noremap = true })
+      vim.keymap.set("n", "<leader>di", require("dap").step_into, { noremap = true })
+
+      vim.keymap.set("n", "<leader>dl", function()
+        require("osv").launch({ port = 8086 })
       end, { noremap = true })
 
-      vim.keymap.set('n', '<leader>dw', function()
-        local widgets = require"dap.ui.widgets"
+      vim.keymap.set("n", "<leader>dw", function()
+        local widgets = require("dap.ui.widgets")
         widgets.hover()
       end)
 
-      vim.keymap.set('n', '<leader>df', function()
-        local widgets = require"dap.ui.widgets"
+      vim.keymap.set("n", "<leader>df", function()
+        local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.frames)
       end)
 
