@@ -48,6 +48,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
       --  All the info you're looking for is in `:help telescope.setup()`
       --
       defaults = {
+        no_ignore = true,
+        hidden = true,
         mappings = {
           i = {
             ["<C-k>"] = require("telescope.actions").move_selection_previous, -- move to prev result
@@ -60,6 +62,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         find_files = {
           file_ignore_patterns = { "node_modules", ".git", ".venv" },
           hidden = true,
+          no_ignore = true,
         },
       },
       live_grep = {
