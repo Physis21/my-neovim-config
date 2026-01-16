@@ -46,6 +46,6 @@ require("lazy").setup({
   require("plugins.cmake-tools"),
   require("plugins.autoformat"),
   require("plugins.surround"),
-  require("plugins.gd-lsp"),
+  -- require("plugins.gd-lsp"),
   -- require("plugins.vimtex"), -- Does not work with nvim0.11 at the moment.
 })

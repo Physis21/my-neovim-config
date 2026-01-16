@@ -30,6 +30,10 @@ return {
     "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
+    --  This function gets run when an LSP attaches to a particular buffer.
+    --    That is to say, every time a new file is opened that is associated with
+    --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
+    --    function will be executed to configure the current buffer
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
       callback = function(event)
@@ -115,6 +119,35 @@ return {
       end,
     })
 
+    -- Diagnostic Config
+    -- See :help vim.diagnostic.Opts
+    vim.diagnostic.config({
+      severity_sort = true,
+      float = { border = "rounded", source = "if_many" },
+      underline = { severity = vim.diagnostic.severity.ERROR },
+      signs = vim.g.have_nerd_font and {
+        text = {
+          [vim.diagnostic.severity.ERROR] = "󰅚 ",
+          [vim.diagnostic.severity.WARN] = "󰀪 ",
+          [vim.diagnostic.severity.INFO] = "󰋽 ",
+          [vim.diagnostic.severity.HINT] = "󰌶 ",
+        },
+      } or {},
+      virtual_text = {
+        source = "if_many",
+        spacing = 2,
+        format = function(diagnostic)
+          local diagnostic_message = {
+            [vim.diagnostic.severity.ERROR] = diagnostic.message,
+            [vim.diagnostic.severity.WARN] = diagnostic.message,
+            [vim.diagnostic.severity.INFO] = diagnostic.message,
+            [vim.diagnostic.severity.HINT] = diagnostic.message,
+          }
+          return diagnostic_message[diagnostic.severity]
+        end,
+      },
+    })
+
     -- LSP servers and clients are able to communicate to each other what features they support.
     -- By default, Neovim doesn't support everything that is in the LSP specification.
     -- When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -130,6 +163,11 @@ return {
     -- - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
     -- - settings (table): Override the default settings passed when initializing the server.
     local servers = {
+      -- gdscript = {
+      --   filetypes = { "gd", "gdscript", "gdscript3" },
+      --   -- root_markers = {}
+      -- },
+      rust_analyzer = {},
       bashls = {},
       clangd = {},
       ts_ls = {},
