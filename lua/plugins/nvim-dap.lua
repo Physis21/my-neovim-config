@@ -33,7 +33,8 @@ return {
           return " " .. variable.value
         end,
 
-        require("dap-python").setup(".venv/bin/python"),
+        -- require("dap-python").setup(".venv/bin/python"), -- python executable location for Linux
+        require("dap-python").setup(".venv/Scripts/python"), -- python executable location for Windows
       })
 
       -- Handled by nvim-dap-go

@@ -32,11 +32,11 @@ require("lazy").setup({
   require("plugins.colortheme"),
   require("plugins.bufferline"),
   require("plugins.lualine"),
-  require("plugins.treesitter"),
+  require("plugins.treesitter"), -- Does not work on Windows, setup of Luarocks is too complex for me.
   require("plugins.telescope"),
-  require("plugins.lsp"),
+  require("plugins.lsp"), -- Fails on windows
   require("plugins.autocompletion"),
-  require("plugins.none-ls"),
+  require("plugins.none-ls"), -- Fails on Windows
   require("plugins.gitsigns"),
   require("plugins.alpha"),
   require("plugins.indent-blankline"),
