@@ -172,7 +172,8 @@ return {
       clangd = {},
       ts_ls = {},
       ruff = {},
-      pyright = {},
+      pylsp = {}, -- I found this lsp to be better than pyright and basedpyright for type checking.
+      -- basedpyright = {},
       html = { filetypes = { "html", "twig", "hbs" } },
       cssls = {},
       -- tailwindcss = {},
