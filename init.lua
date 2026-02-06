@@ -33,6 +33,7 @@ require("lazy").setup({
   require("plugins.bufferline"),
   require("plugins.lualine"),
   require("plugins.treesitter"),
+  require("plugins.context"),
   require("plugins.telescope"),
   require("plugins.lsp"),
   require("plugins.autocompletion"),
@@ -46,5 +47,6 @@ require("lazy").setup({
   require("plugins.cmake-tools"),
   require("plugins.autoformat"),
   require("plugins.surround"),
+  require("plugins.csvview"),
   -- require("plugins.vimtex"), -- Does not work with nvim0.11 at the moment.
 })
