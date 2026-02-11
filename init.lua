@@ -34,6 +34,7 @@ require("lazy").setup({
   require("plugins.lualine"),
   require("plugins.treesitter"), -- Does not work on Windows, setup of Luarocks is too complex for me.
   require("plugins.telescope"),
+  require("plugins.context"),
   require("plugins.lsp"), -- Fails on windows
   require("plugins.autocompletion"),
   require("plugins.none-ls"), -- Fails on Windows
