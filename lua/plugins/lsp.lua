@@ -172,7 +172,42 @@ return {
       clangd = {},
       ts_ls = {},
       ruff = {},
-      pylsp = {}, -- I found this lsp to be better than pyright and basedpyright for type checking.
+      pylsp = {
+        settings = {
+          pylsp = {
+            -- Disable diagnostics completely
+            disableDiagnostics = false,
+            -- Turn off all plugins related to diagnostics
+            plugins = {
+              -- Disable all linting plugins
+              pyflakes = { enabled = false },
+              pycodestyle = { enabled = false },
+              autopep8 = { enabled = false },
+              yapf = { enabled = false },
+              mccabe = { enabled = false },
+              pylsp_mypy = { enabled = false },
+              pylsp_black = { enabled = false },
+              pylsp_isort = { enabled = false },
+              pylint = { enabled = false },
+              flake8 = { enabled = false },
+              pydocstyle = { enabled = false },
+              -- Keep navigation-related plugins enabled
+              rope_completion = { enabled = true },
+              jedi_completion = { enabled = true },
+              jedi_definition = { enabled = true },
+              jedi_hover = { enabled = true },
+              jedi_references = { enabled = true },
+              jedi_signature_help = { enabled = true },
+              jedi_symbols = { enabled = true },
+            },
+          },
+        },
+        -- Disable diagnostics on the client side as well
+        handlers = {
+          ["textDocument/publishDiagnostics"] = function() end,
+        },
+      },
+      -- I found this lsp to be better than pyright and basedpyright for type checking.
       -- basedpyright = {},
       html = { filetypes = { "html", "twig", "hbs" } },
       cssls = {},

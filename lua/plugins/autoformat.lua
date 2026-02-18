@@ -31,7 +31,8 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { "stylua" },
       -- Conform can also run multiple formatters sequentially
-      python = { "isort", "black" },
+      -- python = { "isort", "black" },
+      python = { "black" },
       cpp = { "clang-format" },
       html = { "djlint", "html_beautify" },
       css = { "stylelint" },
