@@ -48,5 +48,6 @@ require("lazy").setup({
   require("plugins.autoformat"),
   require("plugins.surround"),
   require("plugins.csvview"),
+  require("plugins.outline")
   -- require("plugins.vimtex"), -- Does not work with nvim0.11 at the moment.
 })

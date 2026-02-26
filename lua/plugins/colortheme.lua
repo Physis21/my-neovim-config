@@ -8,7 +8,7 @@ return { -- You can easily change to a different colorscheme.
   config = function() -- Callback function called after plugin is ready.
     require("catppuccin").setup({
       -- flavour = "latte", -- light theme
-      flavour = "mocha", -- a dark theme
+      flavour = "latte", -- a dark theme
     })
     vim.cmd.colorscheme("catppuccin")
   end,
