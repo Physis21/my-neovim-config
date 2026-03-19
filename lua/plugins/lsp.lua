@@ -170,7 +170,8 @@ return {
       rust_analyzer = {},
       bashls = {},
       clangd = {},
-      ts_ls = {},
+      -- ts_ls = {},
+      vtsls = {},
       ruff = {},
       pylsp = {
         settings = {
@@ -213,7 +214,8 @@ return {
       cssls = {},
       -- tailwindcss = {},
       dockerls = {},
-      sqlls = {},
+      -- sqlls = {},
+      sqruff = {},
       -- terraformls = {},
       jsonls = {},
       yamlls = {},
