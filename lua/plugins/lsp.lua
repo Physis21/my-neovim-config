@@ -167,6 +167,7 @@ return {
       --   filetypes = { "gd", "gdscript", "gdscript3" },
       --   -- root_markers = {}
       -- },
+      jdtls = {},
       rust_analyzer = {},
       bashls = {},
       clangd = {},

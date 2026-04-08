@@ -1,9 +1,18 @@
 return { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
+  opts = {
+    highlight = { enable = true },
+    -- indent = {
+    --   enable = true,
+    --   disable = { "python" },
+    -- },
+  },
   config = function()
     local filetypes = {
+      "java",
       "bash",
       "c",
+      "c_sharp",
       "diff",
       "html",
       "javascript",
