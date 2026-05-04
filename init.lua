@@ -52,3 +52,11 @@ require("lazy").setup({
   -- require("plugins.vimtex"), -- Does not work with nvim0.11 at the moment.
   require("plugins.database-dbee"),
 })
+
+-- disable built-in python indent script.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.bo.indentexpr = ""
+  end,
+})
