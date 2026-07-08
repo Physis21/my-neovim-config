@@ -1,6 +1,12 @@
 require("core.options") -- Load general options
 require("core.keymaps") -- Load general keymaps
 
+-- Remove "tbl_flatten is deprecated" warning by using its updated version.
+-- tbl_flatten is used in some plugins, hence the break
+vim.tbl_flatten = function(t)
+  return vim.iter(t):flatten():totable()
+end
+
 -- Set up the Lazy plugin manager.
 -- The vim.fn wrapper is the only way to access vimscript functions from lua.
 -- stdpath("data") persistently stores the data between neovim sessions.
@@ -29,7 +35,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   require("plugins.neotree"),
-  require("plugins.colortheme"),
+  -- require("plugins.colortheme"),
   require("plugins.bufferline"),
   require("plugins.lualine"),
   require("plugins.treesitter"),
@@ -60,3 +66,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.indentexpr = ""
   end,
 })
+
+-- My favorite colortheme, highlights comments
+vim.cmd.colorscheme("koehler")

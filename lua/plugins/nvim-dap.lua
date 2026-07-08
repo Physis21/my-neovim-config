@@ -32,9 +32,8 @@ return {
 
           return " " .. variable.value
         end,
-
-        require("dap-python").setup(".venv/bin/python"),
       })
+      require("dap-python").setup(".venv/bin/python")
 
       -- Handled by nvim-dap-go
       -- dap.adapters.go = {

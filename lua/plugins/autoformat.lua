@@ -32,7 +32,7 @@ return { -- Autoformat
       lua = { "stylua" },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
-      python = { "black" },
+      python = { "ruff" },
       cpp = { "clang-format" },
       html = { "djlint", "html_beautify" },
       css = { "stylelint" },

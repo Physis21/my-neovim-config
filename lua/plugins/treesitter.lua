@@ -9,6 +9,7 @@ return { -- Highlight, edit, and navigate code
   },
   config = function()
     local filetypes = {
+      "asm",
       "java",
       "bash",
       "c",
