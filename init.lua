@@ -1,3 +1,5 @@
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
+
 require("core.options") -- Load general options
 require("core.keymaps") -- Load general keymaps
 
@@ -35,7 +37,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   require("plugins.neotree"),
-  -- require("plugins.colortheme"),
+  require("plugins.colortheme"),
   require("plugins.bufferline"),
   require("plugins.lualine"),
   require("plugins.treesitter"),
@@ -68,4 +70,4 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- My favorite colortheme, highlights comments
-vim.cmd.colorscheme("koehler")
+-- vim.cmd.colorscheme("koehler")

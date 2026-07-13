@@ -165,55 +165,72 @@ return {
       -- ts_ls = {},
       vtsls = {},
       ruff = {},
-      pylsp = {
-        -- [CHANGED] root_markers is the key fix for "often doesn't attach".
-        -- The new vim.lsp.config system requires a root marker to be found in or above
-        -- the working directory before it will start the server. Without this, pylsp
-        -- silently skips attachment if your project doesn't have a .git directory.
+      -- pylsp = {
+      --   -- [CHANGED] root_markers is the key fix for "often doesn't attach".
+      --   -- The new vim.lsp.config system requires a root marker to be found in or above
+      --   -- the working directory before it will start the server. Without this, pylsp
+      --   -- silently skips attachment if your project doesn't have a .git directory.
+      --   root_markers = {
+      --     "pyproject.toml",
+      --     "setup.py",
+      --     "setup.cfg",
+      --     "requirements.txt",
+      --     "Pipfile",
+      --     ".git",
+      --   },
+      --   settings = {
+      --     pylsp = {
+      --       -- Disable diagnostics completely
+      --       disableDiagnostics = false,
+      --       -- Turn off all plugins related to diagnostics
+      --       plugins = {
+      --         -- Disable all linting plugins
+      --         pyflakes = { enabled = false },
+      --         pycodestyle = { enabled = false },
+      --         autopep8 = { enabled = false },
+      --         yapf = { enabled = false },
+      --         mccabe = { enabled = false },
+      --         pylsp_mypy = { enabled = false },
+      --         pylsp_black = { enabled = false },
+      --         pylsp_isort = { enabled = false },
+      --         pylint = { enabled = false },
+      --         flake8 = { enabled = false },
+      --         pydocstyle = { enabled = false },
+      --         -- Keep navigation-related plugins enabled
+      --         rope_completion = { enabled = true },
+      --         jedi_completion = { enabled = true },
+      --         jedi_definition = { enabled = true },
+      --         jedi_hover = { enabled = true },
+      --         jedi_references = { enabled = true },
+      --         jedi_signature_help = { enabled = true },
+      --         jedi_symbols = { enabled = true },
+      --       },
+      --     },
+      --   },
+      --   -- Disable diagnostics on the client side as well
+      --   handlers = {
+      --     ["textDocument/publishDiagnostics"] = function() end,
+      --   },
+      -- },
+      -- At the moment I am using pyright as pylsp bugged at cross-file resolution
+      basedpyright = {
         root_markers = {
           "pyproject.toml",
           "setup.py",
           "setup.cfg",
           "requirements.txt",
           "Pipfile",
+          "pyrightconfig.json",
           ".git",
         },
         settings = {
-          pylsp = {
-            -- Disable diagnostics completely
-            disableDiagnostics = false,
-            -- Turn off all plugins related to diagnostics
-            plugins = {
-              -- Disable all linting plugins
-              pyflakes = { enabled = false },
-              pycodestyle = { enabled = false },
-              autopep8 = { enabled = false },
-              yapf = { enabled = false },
-              mccabe = { enabled = false },
-              pylsp_mypy = { enabled = false },
-              pylsp_black = { enabled = false },
-              pylsp_isort = { enabled = false },
-              pylint = { enabled = false },
-              flake8 = { enabled = false },
-              pydocstyle = { enabled = false },
-              -- Keep navigation-related plugins enabled
-              rope_completion = { enabled = true },
-              jedi_completion = { enabled = true },
-              jedi_definition = { enabled = true },
-              jedi_hover = { enabled = true },
-              jedi_references = { enabled = true },
-              jedi_signature_help = { enabled = true },
-              jedi_symbols = { enabled = true },
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = "standard",
             },
           },
         },
-        -- Disable diagnostics on the client side as well
-        handlers = {
-          ["textDocument/publishDiagnostics"] = function() end,
-        },
       },
-      -- I found this lsp to be better than pyright and basedpyright for type checking.
-      -- basedpyright = {},
       html = { filetypes = { "html", "twig", "hbs" } },
       cssls = {},
       -- tailwindcss = {},
