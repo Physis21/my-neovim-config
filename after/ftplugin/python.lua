@@ -3,6 +3,7 @@ vim.bo.indentexpr = ""
 -- Python options
 -- Disable smartindent, which causes double-indentation on continuation lines
 vim.bo.smartindent = false
+vim.o.shiftwidth = 4
 -- Use the default indentexpr behavior without stacking
 vim.bo.cindent = false
 -- Ensure the Python indent plugin doesn't double-apply
