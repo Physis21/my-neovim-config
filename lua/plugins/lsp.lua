@@ -158,7 +158,6 @@ return {
       -- },
       autotools_ls = {}, -- Makefiles
       cmake = {},
-      asm_lsp = {},
       csharp_ls = {},
       jdtls = {},
       rust_analyzer = {},
@@ -238,6 +237,7 @@ return {
     -- Ensure the servers and tools above are installed
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
+      "asm-lsp",
       "stylua", -- Used to format Lua code
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
