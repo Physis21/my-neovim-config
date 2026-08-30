@@ -156,12 +156,14 @@ return {
       --   filetypes = { "gd", "gdscript", "gdscript3" },
       --   -- root_markers = {}
       -- },
+      autotools_ls = {}, -- Makefiles
+      cmake = {},
       asm_lsp = {},
       csharp_ls = {},
       jdtls = {},
       rust_analyzer = {},
       bashls = {},
-      clangd = {},
+      clangd = {}, -- c & c++
       -- ts_ls = {},
       vtsls = {},
       ruff = {},
