@@ -9,8 +9,8 @@ return {
   priority = 1000, -- Make sure to load this before all the other start plugins.
   config = function() -- Callback function called after plugin is ready.
     require("catppuccin").setup({
-      flavour = "latte", -- light theme
-      -- flavour = "mocha", -- a dark theme
+      -- flavour = "latte", -- light theme
+      flavour = "mocha", -- a dark theme
     })
     vim.cmd.colorscheme("catppuccin")
   end,
