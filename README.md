@@ -3,6 +3,8 @@
 - This config has been created following [this youtube video](https://youtu.be/KYDG3AHgYEs?si=XzmA9sXohIXH1aRv), which itself is heavily influenced by kickstart.
 - This single config works on both Linux and Windows: `lua/core/os.lua` exposes `is_windows`, and a handful of files branch on it to apply OS-specific settings (see below). There is no separate Windows branch anymore.
 
+**IMPORTANT**: this config is only compatible with **Neovim v0.12**. There are breaking changes from v0.11 to v0.12, e.g the LSP configurations.
+
 ## Requirements
 
 - On windows, clang and gcc must be installed with MSYS2
