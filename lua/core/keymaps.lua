@@ -9,13 +9,13 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 local opts = { noremap = true, silent = true }
 
 -- Save file
-vim.keymap.set("n", "<C-s>", "<cmd> w <CR>", opts)
-vim.keymap.set("i", "<C-s>", "<cmd> w <CR>", opts)
+vim.keymap.set("n", "<C-s>", "<cmd>noautocmd w <CR>", opts)
+vim.keymap.set("i", "<C-s>", "<cmd>noautocmd w <CR>", opts)
 
 -- Quit file
 vim.keymap.set("n", "<C-q>", "<cmd> q <CR>", opts)
 
--- Save file without auto-formatting
+-- Save file without auto-formatting (overriden by telescope search)
 vim.keymap.set("n", "<leader>sn", "<cmd>noautocmd w <CR>", opts)
 
 -- Delete single character without copying into register

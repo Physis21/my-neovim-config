@@ -1,5 +1,13 @@
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
+
 require("core.options") -- Load general options
 require("core.keymaps") -- Load general keymaps
+
+-- Remove "tbl_flatten is deprecated" warning by using its updated version.
+-- tbl_flatten is used in some plugins, hence the break
+vim.tbl_flatten = function(t)
+  return vim.iter(t):flatten():totable()
+end
 
 -- Set up the Lazy plugin manager.
 -- The vim.fn wrapper is the only way to access vimscript functions from lua.
@@ -32,12 +40,12 @@ require("lazy").setup({
   require("plugins.colortheme"),
   require("plugins.bufferline"),
   require("plugins.lualine"),
-  require("plugins.treesitter"), -- Does not work on Windows, setup of Luarocks is too complex for me.
-  require("plugins.telescope"),
+  require("plugins.treesitter"),
   require("plugins.context"),
-  require("plugins.lsp"), -- Fails on windows
+  require("plugins.telescope"),
+  require("plugins.lsp"),
   require("plugins.autocompletion"),
-  require("plugins.none-ls"), -- Fails on Windows
+  require("plugins.none-ls"),
   require("plugins.gitsigns"),
   require("plugins.alpha"),
   require("plugins.indent-blankline"),
@@ -47,6 +55,19 @@ require("lazy").setup({
   require("plugins.cmake-tools"),
   require("plugins.autoformat"),
   require("plugins.surround"),
-  -- require("plugins.gd-lsp"),
+  require("plugins.csvview"),
+  require("plugins.outline"),
   -- require("plugins.vimtex"), -- Does not work with nvim0.11 at the moment.
+  require("plugins.database-dbee"),
 })
+
+-- disable built-in python indent script.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.bo.indentexpr = ""
+  end,
+})
+
+-- My favorite colortheme, highlights comments
+-- vim.cmd.colorscheme("koehler")
