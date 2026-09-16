@@ -1,8 +1,10 @@
+local is_windows = require("core.os").is_windows
+
 return { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  branch = "master", -- ensures better compatibility on Windows
-  main = "nvim-treesitter.configs", -- Sets main module to use for opts
+  build = is_windows and ":TSUpdate" or nil,
+  branch = is_windows and "master" or nil, -- master branch ensures better compatibility on Windows
+  main = is_windows and "nvim-treesitter.configs" or nil, -- Sets main module to use for opts
   opts = {
     highlight = { enable = true },
     indent = {
@@ -11,7 +13,9 @@ return { -- Highlight, edit, and navigate code
     },
   },
   config = function()
-    require("nvim-treesitter.install").compilers = { "clang", "gcc" } -- clang works on Windows, gcc doesn't
+    if is_windows then
+      require("nvim-treesitter.install").compilers = { "clang", "gcc" } -- clang works on Windows, gcc doesn't
+    end
     local filetypes = {
       "asm",
       "java",

@@ -33,8 +33,11 @@ return {
           return " " .. variable.value
         end,
       })
-      -- require("dap-python").setup(".venv/bin/python") -- python executable location for Linux
-      require("dap-python").setup(".venv/Scripts/python") -- python executable location for Windows
+      if require("core.os").is_windows then
+        require("dap-python").setup(".venv/Scripts/python") -- python executable location on Windows
+      else
+        require("dap-python").setup(".venv/bin/python") -- python executable location on Linux
+      end
 
       -- Handled by nvim-dap-go
       -- dap.adapters.go = {
