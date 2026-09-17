@@ -164,7 +164,6 @@ return {
       --   -- root_markers = {}
       -- },
       tinymist = {},
-      cmake = {},
       csharp_ls = {},
       jdtls = {},
       rust_analyzer = {},
@@ -243,6 +242,7 @@ return {
 
     if not is_windows then
       servers.autotools_ls = {} -- Makefiles
+      servers.cmake = {}
     end
 
     -- Ensure the servers and tools above are installed

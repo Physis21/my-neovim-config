@@ -2,9 +2,10 @@ local is_windows = require("core.os").is_windows
 
 return { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
-  build = is_windows and ":TSUpdate" or nil,
-  branch = is_windows and "master" or nil, -- master branch ensures better compatibility on Windows
-  main = is_windows and "nvim-treesitter.configs" or nil, -- Sets main module to use for opts
+  -- build = is_windows and ":TSUpdate" or nil,
+  -- branch = is_windows and "master" or nil, -- master branch ensures better compatibility on Windows
+  -- main = is_windows and "nvim-treesitter.configs" or nil, -- Sets main module to use for opts
+  build = ":TSUpdate",
   opts = {
     highlight = { enable = true },
     indent = {
