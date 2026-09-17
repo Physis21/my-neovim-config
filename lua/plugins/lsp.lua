@@ -26,9 +26,16 @@ return {
     },
     -- [CHANGED] nvim-cmp capabilities are now set via vim.lsp.config('*', ...) instead of
     -- being passed per-server. cmp-nvim-lsp is still needed to generate those capabilities.
+    --
+    -- This is a small plugin whose only job is to advertise extra LSP client capabilities
+    -- that a completion engine (nvim-cmp, via hrsh7th/nvim-cmp) can take advantage of.
+    -- e.g snippet support, or richer completion item resolution, that Neovim's built-in
+    -- vim.lsp.protocol.make_client_capabilities() doesn't declare by default.
     "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
+    local is_windows = require("core.os").is_windows
+
     -- [CHANGED] Set capabilities globally for all servers using the wildcard config.
     -- This replaces the old per-server `cfg.capabilities = vim.tbl_deep_extend(...)` loop.
     -- nvim-cmp capabilities are merged here once, so every server inherits them automatically.
@@ -157,7 +164,6 @@ return {
       --   -- root_markers = {}
       -- },
       tinymist = {},
-      autotools_ls = {}, -- Makefiles
       cmake = {},
       csharp_ls = {},
       jdtls = {},
@@ -235,12 +241,21 @@ return {
       },
     }
 
+    if not is_windows then
+      servers.autotools_ls = {} -- Makefiles
+    end
+
     -- Ensure the servers and tools above are installed
+    -- Here are LSP servers not managed by Mason.
     local ensure_installed = vim.tbl_keys(servers or {})
+    -- list_extend appends a table in place
     vim.list_extend(ensure_installed, {
-      "asm-lsp",
       "stylua", -- Used to format Lua code
     })
+    if not is_windows then
+      -- table.insert appends a single value
+      table.insert(ensure_installed, "asm-lsp")
+    end
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
     -- [CHANGED] Capabilities are now set globally via vim.lsp.config('*', ...) above,
