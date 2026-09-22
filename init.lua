@@ -60,8 +60,7 @@ require("lazy").setup({
   -- require("plugins.vimtex"), -- Does not work with nvim0.11 at the moment.
   require("plugins.database-dbee"),
 }, {
-  lockfile = vim.fn.stdpath("config")
-    .. (require("core.os").is_windows and "/lazy-lock-windows.json" or "/lazy-lock-linux.json"),
+  lockfile = vim.fn.stdpath("config") .. (require("core.os").is_windows and "/lazy-lock-windows.json" or "/lazy-lock-linux.json"),
 })
 
 -- disable built-in python indent script.

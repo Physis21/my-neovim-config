@@ -11,6 +11,7 @@
   &rarr; [link to MSYS2 installation of clang](https://www.mingw-w64.org/getting-started/msys2-llvm/)
 - **none-ls** requires npm and node.js installed.
   &rarr; [link to the installer](https://kinsta.com/blog/how-to-install-node-js/#1-download-the-windows-installer)
+- Install `treesitter-cli` via cargo or node.
 
 ## OS-specific behavior
 

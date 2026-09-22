@@ -6,6 +6,7 @@ return { -- Highlight, edit, and navigate code
   -- branch = is_windows and "master" or nil, -- master branch ensures better compatibility on Windows
   -- main = is_windows and "nvim-treesitter.configs" or nil, -- Sets main module to use for opts
   build = ":TSUpdate",
+  lazy = false,
   opts = {
     highlight = { enable = true },
     indent = {
