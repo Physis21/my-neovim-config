@@ -6,7 +6,7 @@ return {
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
       "nvim-neotest/nvim-nio",
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       "jbyuki/one-small-step-for-vimkind",
       "mfussenegger/nvim-dap-python",
     },

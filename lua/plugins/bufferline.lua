@@ -1,7 +1,7 @@
 return {
   "akinsho/bufferline.nvim",
+  version = "*",
   dependencies = {
-    "moll/vim-bbye",
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
@@ -10,13 +10,13 @@ return {
         mode = "buffers", -- set to "tabs" to only show tabpages instead
         themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
         numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-        close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
+        close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
         buffer_close_icon = "✗",
         close_icon = "✗",
         path_components = 1, -- Show only the file name without the directory
         modified_icon = "●",
-        left_trunc_marker = "",
-        right_trunc_marker = "",
+        left_trunc_marker = "",
+        right_trunc_marker = "",
         max_name_length = 30,
         max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
         tab_size = 21,
@@ -49,11 +49,6 @@ return {
           bold = true,
           italic = false,
         },
-        -- separator_selected = {},
-        -- tab_selected = {},
-        -- background = {},
-        -- indicator_selected = {},
-        -- fill = {},
       },
     })
   end,

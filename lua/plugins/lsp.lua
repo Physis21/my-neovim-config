@@ -32,6 +32,17 @@ return {
     -- e.g snippet support, or richer completion item resolution, that Neovim's built-in
     -- vim.lsp.protocol.make_client_capabilities() doesn't declare by default.
     "hrsh7th/cmp-nvim-lsp",
+    {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {
+        library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      },
+    },
   },
   config = function()
     local is_windows = require("core.os").is_windows
@@ -251,6 +262,7 @@ return {
     -- list_extend appends a table in place
     vim.list_extend(ensure_installed, {
       "stylua", -- Used to format Lua code
+      "checkmake", -- Used to lint Makefiles
     })
     if not is_windows then
       -- table.insert appends a single value

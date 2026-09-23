@@ -1,4 +1,4 @@
-return { -- Autoformat
+return { -- Autoformat using CLI tools, not LSP servers
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
   cmd = { "ConformInfo" },
@@ -34,13 +34,21 @@ return { -- Autoformat
       -- python = { "isort", "black" },
       python = { "ruff" },
       cpp = { "clang-format" },
-      html = { "djlint", "html_beautify" },
+      html = { "djlint", "html_beautify", "prettier" },
+      json = { "prettier" },
+      yaml = { "prettier" },
+      markdown = { "prettier" },
+      sh = { "shfmt" },
       css = { "stylelint" },
       rust = { "rustfmt", lsp_format = "fallback" },
-      javascript = { "prettierd", "prettier", stop_after_first = true },
-      sql = { "sqlruff" },
       -- You can use 'stop_after_first' to run the first available formatter from the list
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { "prettierd", "prettier", "eslint_d", stop_after_first = true },
+      sql = { "sqlruff" },
+    },
+    formatters = {
+      shfmt = {
+        args = { "-i", "4" },
+      },
     },
   },
 }
