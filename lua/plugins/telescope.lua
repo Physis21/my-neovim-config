@@ -10,8 +10,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       -- This is only run then, not every time Neovim starts up.
       build = "make",
 
-      -- `cond` is a condition used to determine whether this plugin should be
-      -- installed and loaded.
+      -- Install this plugin if make is installed
       cond = function()
         return vim.fn.executable("make") == 1
       end,
@@ -48,6 +47,12 @@ return { -- Fuzzy Finder (files, lsp, etc)
       --  All the info you're looking for is in `:help telescope.setup()`
       --
       defaults = {
+        -- setting layout_strategy/layout_config directly is what actually applies ivy everywhere.
+        layout_strategy = "bottom_pane",
+        layout_config = {
+          height = 25,
+          preview_cutoff = 120,
+        },
         no_ignore = true,
         hidden = true,
         mappings = {
@@ -73,7 +78,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       },
       extensions = {
         ["ui-select"] = {
-          require("telescope.themes").get_dropdown(),
+          require("telescope.themes").get_ivy(),
         },
       },
     })
@@ -97,11 +102,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set("n", "<leader>/", function()
-      -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-      builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-        winblend = 10,
-        previewer = false,
-      }))
+      builtin.current_buffer_fuzzy_find()
     end, { desc = "[/] Fuzzily search in current buffer" })
 
     -- It's also possible to pass additional configuration options.
