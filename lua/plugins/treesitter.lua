@@ -39,6 +39,7 @@ return { -- Highlight, edit, and navigate code
       "python",
       "cpp",
       "rust",
+      "make",
     }
     require("nvim-treesitter").install(filetypes)
     vim.api.nvim_create_autocmd("FileType", {
