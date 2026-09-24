@@ -19,4 +19,13 @@ return {
     },
   },
   cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+  keys = {
+    {
+      "<leader>csv",
+      function()
+        require("csvview").toggle()
+      end,
+      desc = "Toggle CSV View",
+    },
+  },
 }
