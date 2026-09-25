@@ -86,4 +86,7 @@ vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open float
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- Faster command to exit terminal
-vim.keymap.set("t", "jk", [[<C-\><C-n>]], { noremap = true, silent = true })
+vim.keymap.set("t", "<esc><esc>", [[<C-\><C-n>]], { noremap = true, silent = true })
+
+-- Source a lua file for config (used frequently in advent of neovim series)
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
