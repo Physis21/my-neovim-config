@@ -12,8 +12,8 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<C-s>", "<cmd>noautocmd w <CR>", opts)
 vim.keymap.set("i", "<C-s>", "<cmd>noautocmd w <CR>", opts)
 
--- Quit file
-vim.keymap.set("n", "<C-q>", "<cmd> q <CR>", opts)
+-- Quit file (removed as overwrites V-block)
+-- vim.keymap.set("n", "<C-q>", "<cmd> q <CR>", opts)
 
 -- Save file without auto-formatting (overriden by telescope search)
 vim.keymap.set("n", "<leader>sn", "<cmd>noautocmd w <CR>", opts)
