@@ -45,3 +45,6 @@ vim.opt.runtimepath:remove("/usr/share/vim/vimfiles") -- Separate Vim plugins fr
 if require("core.os").is_windows then
   vim.o.shell = "powershell.exe"
 end
+
+-- Neovim doesn't detect .mdx by default (needed for mdx_analyzer, e.g. docusaurus)
+vim.filetype.add({ extension = { mdx = "mdx" } })

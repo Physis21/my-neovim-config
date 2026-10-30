@@ -224,6 +224,14 @@ return {
       sqruff = {},
       -- terraformls = {},
       jsonls = {},
+      -- for docusaurus. Needs a typescript install: use the project's if any, else the one bundled with vtsls
+      mdx_analyzer = {
+        before_init = function(_, config)
+          local project_ts = vim.fs.joinpath(config.root_dir or "", "node_modules", "typescript", "lib")
+          config.init_options.typescript.tsdk = vim.uv.fs_stat(project_ts) and project_ts
+            or vim.fn.stdpath("data") .. "/mason/packages/vtsls/node_modules/@vtsls/language-server/node_modules/typescript/lib"
+        end,
+      },
       yamlls = {},
       lua_ls = {
         settings = {

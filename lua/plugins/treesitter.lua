@@ -42,8 +42,10 @@ return { -- Highlight, edit, and navigate code
       "make",
     }
     require("nvim-treesitter").install(filetypes)
+    -- No mdx parser: highlight .mdx files with the markdown parser
+    vim.treesitter.language.register("markdown", "mdx")
     vim.api.nvim_create_autocmd("FileType", {
-      pattern = filetypes,
+      pattern = vim.list_extend({ "mdx" }, filetypes),
       callback = function()
         vim.treesitter.start()
       end,
