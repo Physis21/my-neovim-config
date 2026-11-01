@@ -25,19 +25,57 @@
   It needs extra native deps that are hard to set up on Windows.
 - `lua/core/options.lua`: `vim.o.shell` is set to `powershell.exe` on Windows only.
 
-## Some handy commands
+## Info on some dependencies
+
+### Treesitter
+
+Treesitter is a parser used for syntactic highlighting. On recent neovim versions, it is included in neovim.
+A grammar is specified with a `grammar.js` file, with which
+
+```bash
+$ treesitter generate -o outdir
+```
+
+generates a `parser.c` file with its header file and other related files (e.g `grammar.json`).
+Treesitter is written in C, but has interfaces for many languages.
+
+> Its [Latex parser](https://github.com/latex-lsp/tree-sitter-latex)
+> is hard to build against in rust, as it doesn't generate parser.c automatically.
+
+`parser.c` contains notable functions:
+
+- `ts_parser_set_language` to set a Language to parse,
+- and `ts_parser_parse_string` to then generate an AST and return it
+
+> In C, `ts_tree_delete` and `ts_parser_delete` need to be called afterwards (arena alloc I guess),
+> but not in Rust (automatic free on scope end) .
+
+## Some handy commands & their context
+
+### Code analysis
 
 - Remove floating diagnostic texts if they take too much space
 
-```vim
-:lua vim.diagnostic.enable(false)
-```
+  ```vim
+  :lua vim.diagnostic.enable(false)
+  ```
 
 - Rename variable:
   Hover over variable, then type
+
   ```vim
   :lua vim.lsp.buf.rename()
   ```
+
+- Treesitter querying:
+  - `:Inspect` to show the highlight groups under the cursor
+  - `:InspectTree` to show the parsed syntax tree
+  - `:EditQuery` to open the Live Query Editor
+    (uses a [lisp-like language](https://tree-sitter.github.io/tree-sitter/3-syntax-highlighting.html))
+    - `o` in `:InspectTree` does the same thing.
+
+### Git
+
 - Use git fugitive and [gitsigns](https://github.com/lewis6991/gitsigns.nvim) commands!
   [Example YT tutorial](https://www.youtube.com/watch?v=IyBAuDPzdFY)
   - `:Git` is similar to `git status`.
@@ -63,3 +101,5 @@
 - The `./plugin/` folder simply executes the code in its lua files on nvim startup, without needing to `require` them in `./init.lua`.
   This is usually left empty, or at least very minimal.
 - `o` and `x` modes refer to `Operator-pending` and `mapmode-x`. Check them out with neovim's help.
+- I added the LSP `mdx_analyzer` for MDX files ([for docusaurus](https://docusaurus.io/)), but they don't seem well-accepted.
+  By default, neovim does'nt recognize the .mdx filetype and neither does treesitter, so I use the markdown grammar for MDX files.
