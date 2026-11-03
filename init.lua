@@ -43,6 +43,7 @@ require("lazy").setup({
   require("plugins.treesitter"),
   require("plugins.context"),
   require("plugins.telescope"),
+  require("plugins.lsp-quadlet"),
   require("plugins.lsp"),
   require("plugins.autocompletion"),
   require("plugins.lint"),
