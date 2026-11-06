@@ -16,6 +16,8 @@
   &rarr; [link to the installer](https://kinsta.com/blog/how-to-install-node-js/#1-download-the-windows-installer)
 
 - Install `treesitter-cli` via cargo or node.
+- Install [`inotify-tools`](https://github.com/inotify-tools/inotify-tools) with `sudo apt install inotify-tools`
+  to make dynamic file registration in LSPs more performant in Linux.
 
 ## OS-specific behavior
 
@@ -103,3 +105,4 @@ Treesitter is written in C, but has interfaces for many languages.
 - `o` and `x` modes refer to `Operator-pending` and `mapmode-x`. Check them out with neovim's help.
 - I added the LSP `mdx_analyzer` for MDX files ([for docusaurus](https://docusaurus.io/)), but they don't seem well-accepted.
   By default, neovim does'nt recognize the .mdx filetype and neither does treesitter, so I use the markdown grammar for MDX files.
+- Restart a broken LSP with `:lsp restart` or `:LspRestart` (specific to `nvim-lspconfig`)
