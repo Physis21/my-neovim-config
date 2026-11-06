@@ -76,6 +76,14 @@ Treesitter is written in C, but has interfaces for many languages.
     (uses a [lisp-like language](https://tree-sitter.github.io/tree-sitter/3-syntax-highlighting.html))
     - `o` in `:InspectTree` does the same thing.
 
+- Use a specific schema (Yaml or Json, with [`schema-companion.nvim`](https://github.com/cenk1cenk2/schema-companion.nvim)):
+
+  ```vim
+  :SCSelectSchema
+  ```
+
+  See other commands starting with `:SC` for `schema-companion`.
+
 ### Git
 
 - Use git fugitive and [gitsigns](https://github.com/lewis6991/gitsigns.nvim) commands!

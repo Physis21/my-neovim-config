@@ -189,11 +189,11 @@ return {
         -- default linux file watcher is not performant.
         -- WARNING: maybe could create performance problems?
         -- !!! won't work for WSL files because 9P/DrvFs mounts don't propagate!
-        capabilities = {
-          workspace = {
-            didChangeWatchedFiles = { dynamicRegistration = true },
-          },
-        },
+        -- capabilities = {
+        --   workspace = {
+        --     didChangeWatchedFiles = { dynamicRegistration = true },
+        --   },
+        -- },
         root_markers = {
           "pyproject.toml",
           "setup.py",

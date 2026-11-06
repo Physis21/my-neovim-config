@@ -45,6 +45,7 @@ require("lazy").setup({
   require("plugins.telescope"),
   require("plugins.lsp-quadlet"),
   require("plugins.lsp"),
+  require("plugins.schema-companion"),
   require("plugins.autocompletion"),
   require("plugins.lint"),
   require("plugins.gitsigns"),
