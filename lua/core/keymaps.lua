@@ -86,7 +86,14 @@ vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open float
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- Faster command to exit terminal
-vim.keymap.set("t", "<esc><esc>", [[<C-\><C-n>]], { noremap = true, silent = true })
+vim.keymap.set("t", "<esc><esc>", [[<C-\><C-n>]], opts)
 
 -- Source a lua file for config (used frequently in advent of neovim series)
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
+
+local function fullPathToClipboard()
+  local filepath = vim.fn.expand("%:p")
+  vim.fn.setreg("+", filepath) -- write to clipboard
+  vim.print("copied " .. filepath .. " abs file path to clipboard")
+end
+vim.keymap.set("n", "<leader>pc", fullPathToClipboard, opts)
