@@ -37,7 +37,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   require("plugins.neotree"),
-  require("plugins.colortheme"),
+  require("plugins.colorscheme"),
   require("plugins.bufferline"),
   require("plugins.lualine"),
   require("plugins.treesitter"),
@@ -73,5 +73,4 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- My favorite colortheme, highlights comments
--- vim.cmd.colorscheme("koehler")
+require("core.colorscheme")
