@@ -2,6 +2,7 @@ vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
 
 require("core.options") -- Load general options
 require("core.keymaps") -- Load general keymaps
+require("core.commands") -- Load general commands
 
 -- Remove "tbl_flatten is deprecated" warning by using its updated version.
 -- tbl_flatten is used in some plugins, hence the break

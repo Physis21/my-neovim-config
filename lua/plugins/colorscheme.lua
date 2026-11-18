@@ -1,8 +1,9 @@
--- All colorschemes are installed but lazy-loaded: lazy.nvim loads the matching
--- plugin when `:colorscheme <name>` is called. The active one is chosen in core/colorscheme.lua.
--- List installed colorschemes with `:Telescope colorscheme`.
+-- All colorschemes load at startup so `:colorscheme <Tab>` lists them.
+-- Loading only runs setup(); the active one is applied in core/colorscheme.lua.
 return {
-  { "catppuccin/nvim", name = "catppuccin", lazy = true, opts = { flavour = "mocha" } },
-  { "scottmckendry/cyberdream.nvim", lazy = true },
-  { "p00f/alabaster.nvim", lazy = true },
+  { "catppuccin/nvim", name = "catppuccin", lazy = false, opts = { flavour = "mocha" } },
+  { "scottmckendry/cyberdream.nvim", lazy = false },
+  { "p00f/alabaster.nvim", lazy = false },
+  { "folke/tokyonight.nvim", lazy = false, opts = {} },
+  { "navarasu/onedark.nvim", lazy = false, opts = { style = "darker" } },
 }
