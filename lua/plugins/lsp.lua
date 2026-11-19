@@ -174,6 +174,7 @@ return {
       --   filetypes = { "gd", "gdscript", "gdscript3" },
       --   -- root_markers = {}
       -- },
+      texlab = {},
       tinymist = {},
       csharp_ls = {},
       jdtls = {},
