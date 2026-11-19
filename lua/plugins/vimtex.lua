@@ -9,6 +9,8 @@ return {
   lazy = false,
   init = function()
     vim.g.vimtex_view_enabled = 0 -- the PDF is viewed separately (e.g outside WSL)
-    vim.g.vimtex_compiler_latexmk = { out_dir = "build" } -- keep VimTeX's default options
+    -- continuous = 0: :VimtexCompile builds once instead of running latexmk -pvc in the background.
+    -- VimTeX merges this table into its defaults, so unset keys keep their default values.
+    vim.g.vimtex_compiler_latexmk = { out_dir = "build", continuous = 0 }
   end,
 }
