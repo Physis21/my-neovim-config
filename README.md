@@ -18,6 +18,8 @@
 - Install `treesitter-cli` via cargo or node.
 - Install [`inotify-tools`](https://github.com/inotify-tools/inotify-tools) with `sudo apt install inotify-tools`
   to make dynamic file registration in LSPs more performant in Linux.
+- `cmake-language-server` requires python >3.8 and <3.14
+- `asm-lsp` requires openssl (v3, not v4) packages (depends for dnf or apt), and gcc, g++.
 
 ## OS-specific behavior
 
