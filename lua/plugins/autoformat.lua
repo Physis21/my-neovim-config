@@ -32,6 +32,7 @@ return { -- Autoformat using CLI tools, not LSP servers
       lua = { "stylua" },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
+      tex = { "tex-fmt" },
       python = { "ruff" },
       cpp = { "clang-format" },
       html = { "djlint", "html_beautify", "prettier" },
@@ -48,6 +49,9 @@ return { -- Autoformat using CLI tools, not LSP servers
     formatters = {
       shfmt = {
         args = { "-i", "4" },
+      },
+      ["tex-fmt"] = {
+        prepend_args = { "--wraplen", "120", "format-tables", "true" },
       },
     },
   },
