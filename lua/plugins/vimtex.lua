@@ -11,6 +11,7 @@ return {
     vim.g.vimtex_view_enabled = 0 -- the PDF is viewed separately (e.g outside WSL)
     -- continuous = 0: :VimtexCompile builds once instead of running latexmk -pvc in the background.
     -- VimTeX merges this table into its defaults, so unset keys keep their default values.
-    vim.g.vimtex_compiler_latexmk = { out_dir = "build", continuous = 0 }
+    -- aux_dir holds the intermediate files; an empty out_dir writes the PDF next to the .tex file.
+    vim.g.vimtex_compiler_latexmk = { aux_dir = ".latexmk", out_dir = "", continuous = 0 }
   end,
 }
