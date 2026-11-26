@@ -35,7 +35,7 @@ return { -- Autoformat using CLI tools, not LSP servers
       tex = { "tex-fmt" },
       python = { "ruff" },
       cpp = { "clang-format" },
-      html = { "djlint", "html_beautify", "prettier" },
+      html = { "djlint", "html_beautify", "prettier", stop_after_first = true },
       json = { "prettier" },
       yaml = { "prettier" },
       markdown = { "prettier" },
@@ -44,7 +44,7 @@ return { -- Autoformat using CLI tools, not LSP servers
       rust = { "rustfmt", lsp_format = "fallback" },
       -- You can use 'stop_after_first' to run the first available formatter from the list
       javascript = { "prettierd", "prettier", "eslint_d", stop_after_first = true },
-      sql = { "sqlruff" },
+      sql = { "sqruff" },
     },
     formatters = {
       shfmt = {
