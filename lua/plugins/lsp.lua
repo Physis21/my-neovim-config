@@ -281,6 +281,17 @@ return {
     vim.list_extend(ensure_installed, {
       "stylua", -- Used to format Lua code
       "checkmake", -- Used to lint Makefiles
+      -- Formatters used by conform.nvim (lua/plugins/autoformat.lua).
+      -- ruff and sqruff are already installed as LSP servers; rustfmt comes with rustup.
+      -- Mason has no package for html_beautify (js-beautify).
+      "tex-fmt",
+      "clang-format",
+      "djlint",
+      "prettier",
+      "prettierd",
+      "eslint_d",
+      "shfmt",
+      "stylelint",
     })
     if not is_windows then
       -- table.insert appends a single value
